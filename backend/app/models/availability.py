@@ -1,16 +1,13 @@
-from sqlalchemy import Column, Date, Time, String, Numeric
+from sqlalchemy import Column, String, Time
 from sqlalchemy.dialects.postgresql import UUID
 from app.core.database import Base
 import uuid
 
-class Appointment(Base):
-    __tablename__ = "appointments"
+class DoctorAvailability(Base):
+    __tablename__ = "doctor_availability"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    patient_id = Column(UUID)
     doctor_id = Column(UUID)
-    appointment_date = Column(Date)
+    day_of_week = Column(String)  # Monday, Tuesday...
     start_time = Column(Time)
     end_time = Column(Time)
-    status = Column(String)
-    ai_score = Column(Numeric)
