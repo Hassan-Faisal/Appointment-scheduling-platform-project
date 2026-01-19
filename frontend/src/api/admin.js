@@ -10,6 +10,9 @@ export const adminApi = {
   unblockUser: (id) => api.patch(`/admin/user/${id}/unblock`),
 
   createDoctor: (data) => api.post("/admin/create-doctor", data),
+  updateDoctor: (doctorId, data) => api.patch(`/admin/doctor/${doctorId}`, data), // Update doctor API
+  getDoctorDetail :(doctorId) => api.get(`/admin/doctor/${doctorId}`),
+  
 
   appointments: () => api.get("/admin/appointments"),
   reschedule: (id, data) =>

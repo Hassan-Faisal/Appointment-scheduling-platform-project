@@ -72,31 +72,31 @@ export default function Dashboard() {
               title="Patients"
               value={stats.patients}
               index={0}
-              // icon={Users}
+              icon={Users}
             />
             <StatCard
               title="Doctors"
               value={stats.doctors}
               index={1}
-              // icon={Stethoscope}
+              icon={Stethoscope}
             />
             <StatCard
               title="Appointments"
               value={stats.appointments}
               index={2}
-              // icon={Calendar}
+              icon={Calendar}
             />
             <StatCard
               title="Cancelled"
               value={stats.cancelled}
               index={3}
-              // icon={XCircle}
+              icon={XCircle}
             />
             <StatCard
               title="Missed"
               value={stats.missed}
               index={4}
-              // icon={Clock}
+              icon={Clock}
             />
           </div>
         ) : null}

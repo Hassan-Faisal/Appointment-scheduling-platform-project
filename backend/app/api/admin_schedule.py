@@ -1,9 +1,11 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.dependencies import require_role
 from app.models.availability import DoctorAvailability
 
+from app.schemas.availability import AvailabilityCreateSchema
+from app.services.admin_service import add_availability_service
 router = APIRouter()
 
 # @router.post("/availability")
@@ -25,7 +27,19 @@ router = APIRouter()
 #     db.commit()
 #     return {"message": "Availability added"}
 
-@router.post("/availability", dependencies=[Depends(require_role("admin"))])
-def add_availability(payload: dict, db: Session = Depends(get_db)):
-    return create_availability(db, payload)
+# @router.post("/availability", dependencies=[Depends(require_role("admin"))])
+# def add_availability(payload: dict, db: Session = Depends(get_db)):
+#     return create_availability(db, payload)
 
+
+@router.post("/availability", dependencies=[Depends(require_role("admin"))])
+def add_availability(
+    payload: AvailabilityCreateSchema,
+    db: Session = Depends(get_db)
+):
+    try:
+        return add_availability_service(db, payload)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to add availability: {str(e)}")

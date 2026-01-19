@@ -3,9 +3,9 @@ from sqlalchemy.orm import Session
 from app.models.user import User
 from app.models.doctor import DoctorProfile
 from app.models.appointment import Appointment
+from app.models.availability import DoctorAvailability
 from app.services.email_service import send_email
 from app.core.security import hash_password
-
 
 def create_doctor(db: Session, payload):
     token = secrets.token_urlsafe(32)
@@ -62,3 +62,33 @@ def reschedule(db: Session, appointment_id, payload):
     appt.end_time = payload["end_time"]
     appt.status = "booked"
     db.commit()
+
+
+
+def add_availability_service(db, payload):
+    # The payload.doctor_id might be a user_id, so we need to find the doctor_profile
+    # First, try to find doctor profile by ID (in case it's already a doctor_profile.id)
+    doctor_profile = db.query(DoctorProfile).filter(DoctorProfile.id == payload.doctor_id).first()
+    
+    # If not found, try to find by user_id (in case it's a user.id)
+    if not doctor_profile:
+        doctor_profile = db.query(DoctorProfile).filter(DoctorProfile.user_id == payload.doctor_id).first()
+    
+    if not doctor_profile:
+        raise ValueError(f"Doctor profile not found for ID: {payload.doctor_id}")
+    
+    availability = DoctorAvailability(
+        doctor_id=doctor_profile.id,  # Use the doctor_profile.id, not user.id
+        day_of_week=str(payload.day_of_week),  # Convert int to string as per model
+        start_time=payload.start_time,
+        end_time=payload.end_time
+    )
+
+    db.add(availability)
+    db.commit()
+    db.refresh(availability)
+
+    return {
+        "message": "Availability added successfully",
+        "availability_id": str(availability.id)
+    }
