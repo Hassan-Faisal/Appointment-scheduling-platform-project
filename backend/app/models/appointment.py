@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Date, Time, String, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
 from app.core.database import Base
+# from sqlalchemy.orm import relationship
 import uuid
 
 class Appointment(Base):
@@ -18,3 +19,10 @@ class Appointment(Base):
     no_show_by = Column(String)  # patient / doctor
 
     ai_score = Column(String)
+
+
+        # Relationship with Doctor model
+    # doctor = relationship("Doctor", back_populates="appointments")
+
+    # # Relationship with PatientProfile model
+    # patient = relationship("PatientProfile", back_populates="appointments")

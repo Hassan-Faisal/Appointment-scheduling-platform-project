@@ -30,5 +30,21 @@ export const getDoctorSlots = (doctorId, date) =>
     params: { date },
   });
 
-export const bookAppointment = (data) =>
-  api.post("/appointments/appointments/appointments/book", data);
+// export const bookAppointment = (data) =>
+//   api.post("/appointments/appointments/book", data);
+
+
+export const bookAppointment = async (data) => {
+  try {
+    // Log the data that will be sent to the backend
+    console.log("Sending Data to Backend:", data);
+
+    const response = await api.post("/appointments/appointments/book", data);
+
+    console.log("Appointment booked successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error booking appointment:", error.response ? error.response.data : error.message);
+    throw error;
+  }
+};

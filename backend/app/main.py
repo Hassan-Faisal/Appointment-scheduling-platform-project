@@ -39,7 +39,7 @@ app.include_router(appointments.router, prefix="/appointments")
 app.include_router(admin_schedule.router, prefix="/admin")
 app.include_router(admin_breaks.router, prefix="/admin")
 app.include_router(slots.router, prefix="/slots")
-app.include_router(patient_actions.router, prefix="/patient")
+# app.include_router(patient_actions.router, prefix="/patient")
 app.include_router(doctor_actions.router, prefix="/doctor")
 app.include_router(system_actions.router, prefix="/system")
 

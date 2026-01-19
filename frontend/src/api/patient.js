@@ -18,4 +18,4 @@ export const getMyAppointmentHistory = () =>
   api.get("/patient/my-history");
 
 export const cancelAppointment = (id) =>
-  api.post(`/patient/cancel/${id}`);
+  api.patch(`/appointments/appointments/cancel/${id}`);

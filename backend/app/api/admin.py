@@ -11,9 +11,6 @@ from app.models.patient import PatientProfile
 from app.schemas.appointment import AdminAppointmentOut
 
 
-
-
-
 router = APIRouter(prefix="/admin", tags=["Admin"])
 
 

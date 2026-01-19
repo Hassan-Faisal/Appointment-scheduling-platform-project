@@ -11,3 +11,6 @@ class DoctorAvailability(Base):
     day_of_week = Column(String)  # Monday, Tuesday...
     start_time = Column(Time)
     end_time = Column(Time)
+
+
+    
