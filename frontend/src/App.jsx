@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
+
+//View
+import HomePage from "./pages/View/Home";
 // Auth
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
@@ -28,8 +31,11 @@ export default function App() {
   return (
     <Router>
       <Routes>
+        {/* View */}
+        <Route path="/" element={<HomePage />} />
+        
         {/* Auth */}
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
