@@ -36,3 +36,33 @@ export const resendVerification = (email) =>
   api.post("/auth/resend-verification", null, {
     params: { email }
   });
+
+
+  // export const resetPassword = async (token, password) => {
+  //   const response = await api.post(`/auth/reset-password/${token}`, {
+  //     password,
+  //   });
+  //   return response.data;
+  // };
+  
+  // This should be in your api.js or similar file
+// export const resetPassword = async (token, newPassword) => {
+//   const response = await api.post(`/auth/reset-password?token=${token}`, {
+//     new_password: newPassword
+//   });
+//   return response.data;
+// };
+
+export const resetPassword = async (token, newPassword) => {
+  try {
+    // Use `token` in the query and `newPassword` in the query string as expected by the backend
+    const response = await api.post(
+      `/auth/reset-password?token=${token}&new_password=${newPassword}`
+    );
+    return response.data;  // Return the response data
+  } catch (error) {
+    console.error("Error resetting password:", error);  // Log the error
+    throw error;  // Re-throw the error for the frontend to handle
+  }
+};
+

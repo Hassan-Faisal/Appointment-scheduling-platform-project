@@ -52,24 +52,25 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)):
         "token_type": "bearer",
     }
 
-# @router.post("/forgot-password")
-# def forgot(email: str):
-#     token = generate_reset_token(email)
-#     send_email(email, "Reset Password", f"Use this token: {token}")
-#     return {"message": "Check email"}
-
 @router.post("/forgot-password")
 def forgot(email: str, db: Session = Depends(get_db)):
-    # Generate a token for password reset
     token = generate_reset_token(email)
-
-    # Create the password reset link
-    reset_link = f"http://localhost:8000/auth/reset-password?token={token}"
-
-    # Send the reset link in the email
-    send_email(email, "Reset Password", f"Click here to reset your password: {reset_link}")
-
+    msg=f"http://localhost:5173/reset-password/{token}"
+    send_email(email, "Reset Password", f"click this link: {msg}")
     return {"message": "Check email"}
+
+# @router.post("/forgot-password")
+# def forgot(email: str, db: Session = Depends(get_db)):
+#     # Generate a token for password reset
+#     token = generate_reset_token(email)
+
+#     # Create the password reset link
+#     reset_link = f"http://localhost:8000/auth/reset-password?token={token}"
+
+#     # Send the reset link in the email
+#     send_email(email, "Reset Password", f"Click here to reset your password: {reset_link}")
+
+#     return {"message": "Check email"}
 
 @router.post("/reset-password")
 def reset(token: str, new_password: str, db: Session = Depends(get_db)):
@@ -102,7 +103,7 @@ def resend_verification(email: str, db: Session = Depends(get_db)):
     user.email_verification_token = token
     db.commit()
 
-    link = f"http://localhost:3000/verify-email?token={token}"
+    link = f"http://localhost:5173/verify-email?token={token}"
     send_email(user.email, "Verify your email", f"Click to verify:\n{link}")
 
     return {"message": "Verification email resent"}
