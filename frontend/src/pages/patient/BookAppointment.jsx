@@ -218,7 +218,7 @@ export default function BookAppointment() {
     htmlFor="online_meeting"
     className="text-sm text-gray-700 cursor-pointer"
   >
-    Online consultation (Google Meet)
+    Online consultation
   </label>
 
   {isOnline && (

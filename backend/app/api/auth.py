@@ -59,18 +59,7 @@ def forgot(email: str, db: Session = Depends(get_db)):
     send_email(email, "Reset Password", f"click this link: {msg}")
     return {"message": "Check email"}
 
-# @router.post("/forgot-password")
-# def forgot(email: str, db: Session = Depends(get_db)):
-#     # Generate a token for password reset
-#     token = generate_reset_token(email)
 
-#     # Create the password reset link
-#     reset_link = f"http://localhost:8000/auth/reset-password?token={token}"
-
-#     # Send the reset link in the email
-#     send_email(email, "Reset Password", f"Click here to reset your password: {reset_link}")
-
-#     return {"message": "Check email"}
 
 @router.post("/reset-password")
 def reset(token: str, new_password: str, db: Session = Depends(get_db)):

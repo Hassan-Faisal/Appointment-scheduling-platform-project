@@ -126,35 +126,13 @@ export default function HomePage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-blue-100 text-base md:text-lg max-w-2xl"
+              className="mt-6 text-blue-100 text-base md:text-lg max-w-3xl"
             >
-              Find verified doctors, check availability, and confirm appointments instantly —
+              Get verified doctors, check availability and confirm appointments instantly —
               all in one platform.
             </motion.p>
 
-            {/* Search bar */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 max-w-2xl bg-white/95 rounded-2xl p-2 shadow-xl backdrop-blur"
-            >
-              <div className="flex flex-col md:flex-row gap-2">
-                <div className="flex items-center gap-2 flex-1 px-3">
-                  <Search className="text-slate-400" size={18} />
-                  <input
-                    className="w-full py-3 bg-transparent outline-none text-slate-700 placeholder:text-slate-400"
-                    placeholder="Search doctors, specialties, hospitals..."
-                  />
-                </div>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                  <button
-                    onClick={() => toast("Search connected with backend later ✅")}
-                    className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold"
-                  >
-                    Search
-                  </button>
-                </motion.div>
-              </div>
-            </motion.div>
+          
 
             {/* CTA buttons */}
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
@@ -280,7 +258,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= TOP DOCTORS ================= */}
+      {/* ================= TOP DOCTORS =================
       <section className="bg-white py-20 border-t">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex items-end justify-between gap-6 mb-10">
@@ -337,7 +315,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ================= CTA ================= */}
       <section className="py-24 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-center">

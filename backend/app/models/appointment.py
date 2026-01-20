@@ -16,6 +16,9 @@ class Appointment(Base):
     end_time = Column(Time)
 
     status = Column(String)
+
+    appointment_type = Column(String)   # online / physical
+    meeting_link = Column(String)    
     no_show_by = Column(String)  # patient / doctor
 
     ai_score = Column(String)
