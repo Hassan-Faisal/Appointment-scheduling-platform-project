@@ -11,9 +11,6 @@ export const getPatientStats = () => api.get("/patient/stats");
 export const getMyUpcomingAppointments = () =>
   api.get("/patient/my-upcoming");
 
-
-
-
 export const getMyAppointmentHistory = () =>
   api.get("/patient/my-history");
 

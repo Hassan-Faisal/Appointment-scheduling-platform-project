@@ -128,7 +128,7 @@ export default function Navbar() {
                     transition={{ duration: 0.2 }}
                     className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-200 py-2 z-20 overflow-hidden"
                   >
-                    <motion.button
+                    {/* <motion.button
                       whileHover={{ x: 4 }}
                       onClick={() => {
                         navigate("/patient/profile");
@@ -139,7 +139,7 @@ export default function Navbar() {
                     >
                       <UserIcon className="w-4 h-4 text-primary" />
                       View Profile
-                    </motion.button>
+                    </motion.button> 
                     <motion.button
                       whileHover={{ x: 4 }}
                       onClick={() => {
@@ -150,7 +150,7 @@ export default function Navbar() {
                     >
                       <Settings className="w-4 h-4 text-gray-500" />
                       Settings
-                    </motion.button>
+                    </motion.button> */}
                     <div className="border-t border-gray-200 my-1"></div>
                     <motion.button
                       whileHover={{ x: 4 }}
