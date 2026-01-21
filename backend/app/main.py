@@ -14,6 +14,9 @@ from app.api import admin_schedule, admin_breaks, slots
 from app.api import patient_actions, doctor_actions, system_actions
 from app.api import doctor_dashboard, patient_dashboard, admin_dashboard
 
+from app.api.ai_data import router as ai_router
+from app.api.ai_response import router as ai_response
+
 
 app = FastAPI()
 
@@ -30,7 +33,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+app.include_router(ai_router)
+app.include_router(ai_response)
 app.include_router(auth.router, prefix="/auth")
 app.include_router(patient.router, prefix="/patient")
 # app.include_router(doctor.router, prefix="/doctor")

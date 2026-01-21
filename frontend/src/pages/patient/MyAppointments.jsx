@@ -64,7 +64,7 @@ import PatientLayout from "../../layouts/PatientLayout";
 import { getMyUpcomingAppointments, getMyAppointmentHistory, cancelAppointment } from "../../api/patient";
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 50 },
   visible: {
     opacity: 1,
     transition: { staggerChildren: 0.08 },
@@ -72,7 +72,7 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { y: 16, opacity: 0 },
+  hidden: { y: 16, opacity: 50 },
   visible: {
     y: 0,
     opacity: 1,

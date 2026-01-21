@@ -36,7 +36,7 @@ def create_doctor(db: Session, payload):
         user.email,
         "Verify Your Doctor Account",
         # f"Verification Token: {token}"
-        f"http://localhost:3000/verify-email?token={token}"
+        f"http://localhost:5173/verify-email?token={token}"
     )
 
     return {"message": "Doctor created & verification email sent"}

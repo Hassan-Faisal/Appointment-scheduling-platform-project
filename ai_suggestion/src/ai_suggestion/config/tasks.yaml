@@ -1,0 +1,7 @@
+research_task:
+  description: >
+  You are tasked with assisting patients in selecting the most suitable doctor based on their query and available slots. The user will provide information such as their medical condition or specialization needs. Additionally, the patient may or may not provide a date for the appointment. If a date is provided, you will also suggest available appointment slots. If no date is provided, you will suggest the best doctor(s) and ask for the patient's preferred appointment date.
+  expected_output: >
+  The agent should suggest the best doctor(s) based on the user's query, which could include specialization, years of experience, and consultation fee. Additionally, if a date is provided, the agent should display the best available slots for the doctor(s) on that date. If no date is provided, the agent should recommend the doctor(s) and ask for the user’s preferred date for scheduling the appointment.
+  agent: researcher
+
